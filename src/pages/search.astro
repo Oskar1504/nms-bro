@@ -10,14 +10,14 @@ import Search2 from "@components/Search";
 // Retrieve all articles
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 const factions = await getCollection("faction", ({ data }) => !data.draft);
-
 const searchItems = [...posts, ...factions]
 
 // List of items to search in
-const searchList = searchItems.map(({ data }) => ({
+const searchList = searchItems.map(({collection, data}) => ({
   title: data.title,
   description: data.description,
-  data,
+  collection: collection,
+  data
 }));
 ---
 
