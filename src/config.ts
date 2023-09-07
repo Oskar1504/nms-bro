@@ -1,11 +1,11 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://brolo-republic.otypes.de/",
+  website: "https://brolo-republic.opeweb.de/",
   author: "Oskar1504",
   desc: "A overview website for the No Mans Sky civilization Brolo Republic",
   title: "Brolo Republic",
-  ogImage: "",
+  ogImage: "https://media.discordapp.net/attachments/1104855004126400643/1124794399948288041/Brolo_Republic_2_.png",
   lightAndDarkMode: true,
   postPerPage: 5,
 };

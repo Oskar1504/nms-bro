@@ -13,6 +13,12 @@ I recently started a new No Man's Sky playthrough and youtube showed me an video
 - [AstroPaper](https://github.com/satnaing/astro-paper)
   - awesome theme for astro 
 
+# Roadmap website
+- tutorial video on youtube so anyone can create posts
+- depending on the requests i get for new posts and factions i will create an web app which allows our civilization members to create own posts
+- upload code to github to make it open source
+
+
 # Astro Paper
 AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
 
