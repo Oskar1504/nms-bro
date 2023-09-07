@@ -46,6 +46,16 @@ const allSites = [...posts, ...factions]
 const tagPosts = getPostsByTag(allSites, tag);
 
 const sortTagsPost = getSortedEntrys(tagPosts);
+
+let link = "posts"
+
+function getEntryCollectionName(mdSlug: string|undefined){
+  if(factions.find(e => e.data.postSlug == mdSlug) != undefined){
+    link = "factions"
+  }
+
+  return link
+}
 ---
 
 <Layout title={`Tag:${tag} | ${SITE.title}`}>
@@ -57,7 +67,7 @@ const sortTagsPost = getSortedEntrys(tagPosts);
     <ul>
       {
         sortTagsPost.map(({ data }) => (
-          <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
+          <Card href={`/${getEntryCollectionName(data.postSlug)}/${slugify(data)}`} frontmatter={data} />
         ))
       }
     </ul>
