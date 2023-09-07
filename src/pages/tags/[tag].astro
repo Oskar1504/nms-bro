@@ -1,0 +1,66 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Card from "@components/Card";
+import Tags from "@utils/getUniqueTags";
+import getPostsByTag from "@utils/getPostsByTag";
+import slugify from "@utils/slugify";
+import { SITE } from "@config";
+import getSortedEntrys from "@utils/getSortedEntrys";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  tag: string;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const factions = await getCollection("faction");
+
+  const tags = [
+    ...Tags.getUniqueBlogTags(posts),
+    ...Tags.getUniqueFactionTags(factions)
+  ]
+
+
+
+
+  return tags.map(tag => {
+    return {
+      params: { tag },
+      props: { tag },
+    };
+  });
+}
+
+const { tag } = Astro.props;
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const factions = await getCollection("faction", ({ data }) => !data.draft);
+
+const allSites = [...posts, ...factions]
+
+const tagPosts = getPostsByTag(allSites, tag);
+
+const sortTagsPost = getSortedEntrys(tagPosts);
+---
+
+<Layout title={`Tag:${tag} | ${SITE.title}`}>
+  <Header activeNav="tags" />
+  <Main
+    pageTitle={`Tag:${tag}`}
+    pageDesc={`All the articles with the tag "${tag}".`}
+  >
+    <ul>
+      {
+        sortTagsPost.map(({ data }) => (
+          <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
+        ))
+      }
+    </ul>
+  </Main>
+  <Footer />
+</Layout>

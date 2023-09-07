@@ -1,0 +1,18 @@
+---
+import { SITE } from "@config";
+import Factions from "@layouts/Factions.astro";
+import getSortedFactions from "@utils/getSortedFactions";
+import getPageNumbers from "@utils/getPageNumbers";
+
+import { getCollection } from "astro:content";
+
+const factions = await getCollection("faction");
+
+const sortedFactions = getSortedFactions(factions);
+
+const totalPages = getPageNumbers(sortedFactions.length);
+
+const paginatedFactions = sortedFactions.slice(0, SITE.postPerPage);
+---
+
+<Factions factions={paginatedFactions} pageNum={1} totalPages={totalPages.length} />

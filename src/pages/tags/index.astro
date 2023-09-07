@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Tag from "@components/Tag.astro";
+import Hr from "@components/Hr.astro";
+import tags from "@utils/getUniqueTags";
+import { SITE } from "@config";
+
+const posts = await getCollection("blog");
+const factions = await getCollection("faction");
+
+let blogTags = tags.getUniqueBlogTags(posts);
+let factionTags = tags.getUniqueFactionTags(factions);
+---
+
+<Layout title={`Tags | ${SITE.title}`}>
+  <Header activeNav="tags" />
+  <Main pageTitle="Tags" pageDesc="All the tags used in factions or posts.">
+    <h2>Faction tags</h2>
+    <ul>
+      {factionTags.map(tag => <Tag name={tag} size="lg" />)}
+    </ul>
+
+
+    <h2 class="mt-6">Post tags</h2>
+    <ul>
+      {blogTags.map(tag => <Tag name={tag} size="lg" />)}
+    </ul>
+  </Main>
+  <Footer />
+</Layout>
+
+<style>
+  h2 {
+    font-size: larger !important;
+    font-weight: bolder !important;
+  }
+</style>
