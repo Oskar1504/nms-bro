@@ -4,6 +4,8 @@ this is an [Astro](https://astro.build/) setup with [astroPaper](https://github.
 
 it just shows all factions of the No Mans Sky Civilization [Brolo Republic](https://nomanssky.fandom.com/wiki/Brolo_Republic) founded by [NoloPada](https://www.youtube.com/watch?v=wdMuD_CHt4M)
 
+[Live page]()
+
 ## features
 - faction list
 - blog post list
@@ -30,3 +32,6 @@ it just shows all factions of the No Mans Sky Civilization [Brolo Republic](http
 - run `npm i`
 - run `npm run dev`
 - visit [http://localhost:3000](http://localhost:3000)
+
+# live tech stack
+- at the moment 2023-09-07 this code is edited by Oskar1504 build and uploaded to a subdomain hosted by Oskar1504
