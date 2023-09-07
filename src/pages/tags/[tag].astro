@@ -10,6 +10,7 @@ import getPostsByTag from "@utils/getPostsByTag";
 import slugify from "@utils/slugify";
 import { SITE } from "@config";
 import getSortedEntrys from "@utils/getSortedEntrys";
+import resolveCollection from "@utils/resolveCollection";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -49,13 +50,6 @@ const sortTagsPost = getSortedEntrys(tagPosts);
 
 let link = "posts"
 
-function getEntryCollectionName(mdSlug: string|undefined){
-  if(factions.find(e => e.data.postSlug == mdSlug) != undefined){
-    link = "factions"
-  }
-
-  return link
-}
 ---
 
 <Layout title={`Tag:${tag} | ${SITE.title}`}>
@@ -66,8 +60,8 @@ function getEntryCollectionName(mdSlug: string|undefined){
   >
     <ul>
       {
-        sortTagsPost.map(({ data }) => (
-          <Card href={`/${getEntryCollectionName(data.postSlug)}/${slugify(data)}`} frontmatter={data} />
+        sortTagsPost.map(({ collection, data }) => (
+          <Card href={`/${resolveCollection(collection)}s/${slugify(data)}`} frontmatter={data} />
         ))
       }
     </ul>
