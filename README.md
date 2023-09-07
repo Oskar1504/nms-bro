@@ -4,7 +4,7 @@ this is an [Astro](https://astro.build/) setup with [astroPaper](https://github.
 
 it just shows all factions of the No Mans Sky Civilization [Brolo Republic](https://nomanssky.fandom.com/wiki/Brolo_Republic) founded by [NoloPada](https://www.youtube.com/watch?v=wdMuD_CHt4M)
 
-[Live page]()
+[Live page](https://brolo-republic.opeweb.de/)
 
 ## features
 - faction list
